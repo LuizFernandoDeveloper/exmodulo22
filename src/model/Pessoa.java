@@ -1,5 +1,8 @@
 package model;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Pessoa {
     
     private String name;
@@ -23,12 +26,20 @@ public class Pessoa {
     }
 
     public void setSexo(String sexo) {
-        this.sexo = sexo;
+        if(sexo.equals("M") || sexo.equals("F")){
+            this.sexo = sexo;
+        }else {
+            this.sexo = null;
+        }
+    }
+
+    public static  List<Pessoa> getListSexo(List<Pessoa> listp, String searchSexo ){
+     return  listp.stream().filter(p -> p.getSexo().toUpperCase() == searchSexo.toUpperCase()).collect(Collectors.toList());
     }
 
     @Override
     public String toString() {
-        return "Pessoa [  name = " + name + ", sexo = " + sexo + "  ]";
+        return "Pessoa [ name = " + name + ", sexo = " + sexo + " ]";
     }
 
     @Override

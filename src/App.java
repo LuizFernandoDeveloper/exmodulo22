@@ -25,17 +25,13 @@ public class App {
             listPessoa.add(pessoa);
             quantity --;
         }
-        List<Pessoa> listPesssoa2 = listPessoa.stream()
-        .filter(p -> p.getSexo().equals("F"))
-        .collect(Collectors.toList());
+
         System.out.println("_____Lista de mulheres_______");
-        listPesssoa2.forEach(x -> System.out.println(x));
+        List<Pessoa>listPessoa2 = Pessoa.getListSexo(listPessoa, "M");
+        listPessoa2.forEach(x -> System.out.println(x));
         System.out.println();
         System.out.println("_____Lista de homens_______");
-        List<Pessoa> listPessoas3 = listPessoa.stream()
-        .filter(x -> x.getSexo().equals("M"))
-        .collect(Collectors.toList());
-
+        List<Pessoa> listPessoas3 = Pessoa.getListSexo(listPessoa, "F");
         listPessoas3.forEach(x -> System.out.println(x));
         sc.close();
     }
